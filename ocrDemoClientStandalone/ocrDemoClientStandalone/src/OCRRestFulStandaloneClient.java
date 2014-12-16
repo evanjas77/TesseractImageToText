@@ -8,6 +8,11 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
 
+/**
+ * A test class to stream across an image to the RESTFul OCR service and get converted text in response.
+ * @author Evangeline
+ *
+ */
 public class OCRRestFulStandaloneClient {
 	public static void main(String[] args) {
 		try {
