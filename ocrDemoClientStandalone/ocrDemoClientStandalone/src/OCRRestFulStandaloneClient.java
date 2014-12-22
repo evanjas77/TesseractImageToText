@@ -17,7 +17,7 @@ public class OCRRestFulStandaloneClient {
 	public static void main(String[] args) {
 		try {
 			URL url = new URL(
-					"http://localhost:7001/ocrDemoProject/rest/imageToText");
+					"http://localhost:7001/ocrDemoProject/rest/ocr/imageToText");
 			HttpURLConnection connection = (HttpURLConnection) url
 					.openConnection();
 			connection.setRequestMethod("POST");
