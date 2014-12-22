@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -13,10 +14,11 @@ import javax.ws.rs.core.MediaType;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
-@Path("/imageToText")
+@Path("/ocr")
 public class OCRRestFulWS {
 
 	@POST
+	@Path("/imageToText")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getText(InputStream incomingData) {
 
@@ -42,5 +44,12 @@ public class OCRRestFulWS {
 
 		return result;
 
+	}
+	
+	@GET
+	@Path("/ping")
+	@Produces(MediaType.TEXT_HTML)
+	public String ping(){
+		return "<h1>Tessaract OCR RESTFul Service good to go ! <h1>";
 	}
 }
