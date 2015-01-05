@@ -9,7 +9,9 @@ import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
 
 /**
- * A test class to stream across an image to the RESTFul OCR service and get converted text in response.
+ * A test class to stream across an image to the RESTFul OCR service and get
+ * converted text in response.
+ * 
  * @author Evangeline
  *
  */
@@ -30,8 +32,12 @@ public class OCRRestFulStandaloneClient {
 					.getOutputStream();
 			byte[] buffer = new byte[0xFFFF];
 
-			for (int len; (len = iis.read(buffer)) != -1;)
+			//System.out.println("Image stream:\n");
+
+			for (int len; (len = iis.read(buffer)) != -1;) {
 				os.write(buffer, 0, len);
+				//System.out.println(buffer.toString());
+			}
 
 			os.flush();
 			os.close();
