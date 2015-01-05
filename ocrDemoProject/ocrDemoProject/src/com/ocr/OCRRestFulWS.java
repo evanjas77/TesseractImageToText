@@ -14,13 +14,20 @@ import javax.ws.rs.core.MediaType;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+
 @Path("/ocr")
+@Api(value = "/ocr", description = "Manage ocr operations such as converting image to text etc.")
 public class OCRRestFulWS {
 
 	@POST
 	@Path("/imageToText")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getText(InputStream incomingData) {
+	@ApiOperation(value = "Returns text extracted from an image", notes = "Returns text extracted from an image", response = String.class)
+	public String getText(
+			@ApiParam(value = "Image byte stream", required = true) InputStream incomingData) {
 
 		String result = "<No results> !";
 
@@ -45,11 +52,12 @@ public class OCRRestFulWS {
 		return result;
 
 	}
-	
+
 	@GET
 	@Path("/ping")
 	@Produces(MediaType.TEXT_HTML)
-	public String ping(){
+	@ApiOperation(value = "Returns status of the ocr service", notes = "Returns status of the ocr service", response = String.class)
+	public String ping() {
 		return "<h1>Tessaract OCR RESTFul Service good to go ! <h1>";
 	}
 }
