@@ -32,11 +32,11 @@ public class OCRRestFulStandaloneClient {
 					.getOutputStream();
 			byte[] buffer = new byte[0xFFFF];
 
-			//System.out.println("Image stream:\n");
+			// System.out.println("Image stream:\n");
 
 			for (int len; (len = iis.read(buffer)) != -1;) {
 				os.write(buffer, 0, len);
-				//System.out.println(buffer.toString());
+				// System.out.println(buffer.toString());
 			}
 
 			os.flush();
@@ -56,4 +56,5 @@ public class OCRRestFulStandaloneClient {
 			System.out.println(e);
 		}
 	}
+
 }
